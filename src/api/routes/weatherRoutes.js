@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import logger from '../config/logger';
 
-import { getWeatherInfoForCity } from '../services/weatherService'
-import weatherDAO from '../repository/weatherDAO'
+import { getWeatherInfoForCity } from '../services/weatherService';
+import weatherDAO from '../repository/weatherDAO';
 const router = Router();
 
 router.get('/:city', async (req, res, next) => {
@@ -11,12 +11,12 @@ router.get('/:city', async (req, res, next) => {
     try {
         const weatherData = await getWeatherInfoForCity(cityName, weatherDAO);
         res.status(200).json(weatherData).end();
-        next()
+        next();
     } catch (error) {
-        logger.error(error.stack)
-        next(error)
+        logger.error(error.stack);
+        next(error);
     }
-})
+});
 
 
 export default router;

@@ -3,4 +3,4 @@ export default class NoRecordsFound extends Error {
         super(message); // (1)
         this.status = status
     }
-}
+};

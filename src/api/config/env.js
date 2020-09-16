@@ -1,8 +1,8 @@
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
-const envFound = dotenv.config()
+const envFound = dotenv.config();
 if (envFound.error) {
-    throw new Error("cound not find the .env file")
+    throw new Error("cound not find the .env file");
 }
 
 export default {
@@ -12,5 +12,5 @@ export default {
         pgConnectionString: process.env.PG_CONNECTION_STRING,
     }
 
-}
+};
 

@@ -1,4 +1,4 @@
-import db from '../config/db'
+import db from '../config/db';
 
 const findWeatherInfoByCityQuery = `
 SELECT
@@ -30,19 +30,21 @@ FROM
    WHERE DATE_TRUNC('day', now()) - '1 day'::interval <= probe_time
    AND probe_time < DATE_TRUNC('day', now())
    GROUP BY city_name
-) AS city_yesterday ON city.city_name = city_yesterday.city_name;`
+) AS city_yesterday ON city.city_name = city_yesterday.city_name;`;
 
 async function findWeatherInfoByCity(cityName) {
     return await db.oneOrNone(findWeatherInfoByCityQuery, [cityName]);
 }
+
 const refreshWeekWeatherMaterializedViewQuery = `
 REFRESH MATERIALIZED VIEW week_weather_materialized_view; 
-`
+`;
+
 async function refreshWeekWeatherMaterializedView() {
-    return await db.none(refreshWeekWeatherMaterializedViewQuery)
+    return await db.none(refreshWeekWeatherMaterializedViewQuery);
 }
 
 export default {
     findWeatherInfoByCity,
     refreshWeekWeatherMaterializedView
-}
+};

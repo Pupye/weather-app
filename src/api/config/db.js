@@ -1,6 +1,6 @@
-import pgp from 'pg-promise'
+import pgp from 'pg-promise';
 
-import env from '../config/env'
+import env from '../config/env';
 
 const db = pgp()(env.db.pgConnectionString);
 

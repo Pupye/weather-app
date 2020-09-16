@@ -1,12 +1,12 @@
-import NoRecordsFoundError from '../errors/NoRecordsError'
+import NoRecordsFoundError from '../errors/NoRecordsError';
 
 async function getWeatherInfoForCity(city, weatherDAO) {
-    const info = await weatherDAO.findWeatherInfoByCity(city)
+    const info = await weatherDAO.findWeatherInfoByCity(city);
     if (!info) {
-        throw new NoRecordsFoundError('no records found for city')
+        throw new NoRecordsFoundError('no records found for city');
     }
-    return info
+    return info;
 }
 
 
-export { getWeatherInfoForCity }
+export { getWeatherInfoForCity };
