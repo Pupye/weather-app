@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS city (
+    id SERIAL PRIMARY KEY,
+    country VARCHAR(100) NOT NULL,
+    city_name VARCHAR(100) NOT NULL
+);
