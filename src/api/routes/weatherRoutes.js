@@ -2,7 +2,7 @@ import { Router } from 'express';
 import logger from '../config/logger';
 
 import { getWeatherInfoForCity } from '../services/weatherService'
-import weatherDAO from '../repository/wealtherDAO'
+import weatherDAO from '../repository/weatherDAO'
 const router = Router();
 
 router.get('/:city', async (req, res, next) => {

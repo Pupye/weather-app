@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import logger from './api/config/logger';
 
 import WeatherRoutes from './api/routes/weatherRoutes';
-import { generalError } from './api/errors/weatherErrors';
+import { generalErrorHandler, NoRecordsFoundErrorHandler } from './api/errors/handlers';
 
 
 async function startServer() {
@@ -15,7 +15,8 @@ async function startServer() {
     app.get('/api/health/', (req, res) => { res.status(200).end() })
 
     //errors
-    app.use(generalError)
+    app.use(NoRecordsFoundErrorHandler)
+    app.use(generalErrorHandler)
     app.listen(8080, err => {
         if (err) {
             process.exit(1);
