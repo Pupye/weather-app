@@ -49,6 +49,6 @@ REFRESH MATERIALIZED VIEW week_weather_materialized_view;
 
 # Запуск
 - `npm install`
-- `./start`
+- `./start.sh`
 
 предполагается что у вас установлен docker-compose 
