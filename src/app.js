@@ -5,7 +5,7 @@ import logger from './api/config/logger';
 import WeatherRoutes from './api/routes/weatherRoutes';
 import { generalErrorHandler, NoRecordsFoundErrorHandler } from './api/errors/handlers';
 import { startJobs } from './api/services/cronService'
-
+import env from './api/config/env'
 
 async function startServer() {
     const app = express();
@@ -21,11 +21,11 @@ async function startServer() {
 
     //cron
     await startJobs()
-    app.listen(8080, err => {
+    app.listen(env.port, env.inteface, err => {
         if (err) {
             process.exit(1);
         }
-        console.log("server was started");
+        logger.info(`server is online on port ${env.port} and interface ${env.inteface}`)
     });
 }
 

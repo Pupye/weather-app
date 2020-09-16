@@ -1,5 +1,7 @@
 import pgp from 'pg-promise'
 
-const db = pgp()('postgres://postgres:changeme@localhost:5432/dev_db');
+import env from '../config/env'
+
+const db = pgp()(env.db.pgConnectionString);
 
 export default db;
