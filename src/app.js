@@ -4,6 +4,7 @@ import logger from './api/config/logger';
 
 import WeatherRoutes from './api/routes/weatherRoutes';
 import { generalErrorHandler, NoRecordsFoundErrorHandler } from './api/errors/handlers';
+import { startJobs } from './api/services/cronService'
 
 
 async function startServer() {
@@ -17,6 +18,9 @@ async function startServer() {
     //errors
     app.use(NoRecordsFoundErrorHandler)
     app.use(generalErrorHandler)
+
+    //cron
+    await startJobs()
     app.listen(8080, err => {
         if (err) {
             process.exit(1);
