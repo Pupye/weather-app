@@ -3,8 +3,8 @@ import db from '../config/db'
 const findWeatherInfoByCityQuery = `
 SELECT
     city_today.t AS today,
-    city_avg.t AS average,
-    city_yesterday.t AS yesterday 
+    city_yesterday.t AS yesterday,
+    city_avg.t AS "week-average"
 FROM
 (
   SELECT city_name 
