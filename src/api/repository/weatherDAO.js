@@ -35,7 +35,14 @@ FROM
 async function findWeatherInfoByCity(cityName) {
     return await db.oneOrNone(findWeatherInfoByCityQuery, [cityName]);
 }
+const refreshWeekWeatherMaterializedViewQuery = `
+REFRESH MATERIALIZED VIEW week_weather_materialized_view; 
+`
+async function refreshWeekWeatherMaterializedView() {
+    return await db.none(refreshWeekWeatherMaterializedViewQuery)
+}
 
 export default {
-    findWeatherInfoByCity
+    findWeatherInfoByCity,
+    refreshWeekWeatherMaterializedView
 }
